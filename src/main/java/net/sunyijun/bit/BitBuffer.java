@@ -331,6 +331,9 @@ public class BitBuffer {
     }
 
     /**
+     * <pre>
+     * 从buffer高位开始追加，追加data的低bitLength位
+     * 
      * Put fixed bit count into buffer, from byte right part bits.
      * Because of put one byte, so bitLength can't larger than 8 or be negative.
      * <p/>
@@ -346,7 +349,7 @@ public class BitBuffer {
      * another data, will throw BufferOverflowException.
      *
      * @return Current buffer.
-     * @throws IllegalArgumentException bitLength can't lager than 8 or be negative.
+     * @throws IllegalArgumentException bitLength can't lager than 8 or be negative.  
      * @throws BufferOverflowException  have not enough bit to get.
      */
     public BitBuffer put(byte data, int bitLength) {
@@ -401,6 +404,9 @@ public class BitBuffer {
     }
 
     /**
+     * <pre>
+     * 从左边起  index 为 putBitPosition 的位置，开始向右 放置data 的低bitLength位
+     * 
      * Put fixed bit count into buffer, start put position in buffer is putBitPosition,
      * from byte right part bits. Because of put one byte, so bitLength can't larger
      * than 8 or be negative. This will not change position.
@@ -415,6 +421,8 @@ public class BitBuffer {
      * @return Current buffer.
      * @throws IllegalArgumentException bitLength can't lager than 8 or be negative.
      * @throws BufferOverflowException  have not enough bit to get.
+     * 
+     * 
      */
     public BitBuffer put(byte data, int putBitPosition, int bitLength) {
         if(bitLength > 8) {
@@ -596,6 +604,9 @@ public class BitBuffer {
     }
 
     /**
+     * <pre>
+     * 从buffer的左边开始追加，放入data的低length位
+     * 
      * Put fixed bit count of integer into buffer, from int right
      * (00000000 00000000 00000000 11000000 count 8 will use 11000000, not 00000000).
      * Because of put bytes, so bitLength can't larger than 8*data.length or be negative.
